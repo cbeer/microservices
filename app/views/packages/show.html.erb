@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Identifier:</b>
+  <%= @package.identifier %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @package.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @package.description %>
+</p>
+
+<p>
+  <b>Metadata:</b>
+  <%= @package.metadata %>
+</p>
+
+
+<%= link_to 'Edit', edit_package_path(@package) %> |
+<%= link_to 'Back', packages_path %>

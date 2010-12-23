@@ -11,6 +11,7 @@ gem "noid"
 gem "bagit"
 gem "lockit"
 gem "validatable"
+gem "pairtree"
 
 # Use unicorn as the web server
 # gem 'unicorn'

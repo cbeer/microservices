@@ -13,11 +13,12 @@ class Package < ActiveRecord::Base
   end
 
   def bag
+    FileUtils.mkdir_p object_path unless File.exists? object_path
     BagIt::Bag.new(object_path)
   end
 
   def object_path
-    File.join RAILS_ROOT, 'data', self.identifier
+    File.join RAILS_ROOT, 'data', Pairtree::Path.id_to_path(self.identifier)
   end
 
   private

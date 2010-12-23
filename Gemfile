@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "noid"
 gem "bagit"
+gem "lockit"
 gem "validatable"
 
 # Use unicorn as the web server

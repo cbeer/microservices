@@ -1,5 +1,9 @@
 class Asset < ActiveRecord::Base
-  has_attached_file :data,
+  attr_accessor :attachable_data_path
+
+  has_attached_file :data, :url => "/assets/:id", :path => ":attachable_data_path/:basename.:style.:extension"
+
+  after_commit :save_attachable
 
   belongs_to :attachable, :polymorphic => true
   
@@ -17,5 +21,16 @@ class Asset < ActiveRecord::Base
   
   def file_size
     data_file_size
+  end
+
+  def attachable_data_path
+    return self.attachable.bag.data_dir if self.attachable
+    @attachable_data_path = File.join RAILS_ROOT, 'holding'
+  end
+
+  protected
+
+  def save_attachable
+    self.attachable.save
   end
 end
